@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
+#include <iostream>
+
+using namespace std;
+
+int GetRandomNumber(int min, int max)
+{
+  srand(time(NULL));
+
+  int num = min + rand() % (max - min + 1);
+
+  return num;
+}
+int com(int width,int height){
+    int com[width][height];
+for(int i=0; i<height; i++){
+    for(int j=0; j<width; j++){
+        
+        com[i][j] = GetRandomNumber(1,14);
+}
+}
+return com[width][height];
+}
+
+int main() {
+int com1**;
+// cout << "dhsafkshkdfa";
+int width=2,height=1;
+com1=com(width,height);
+for(int i=0; i<height; i++){
+    for(int j; j<width; j++)
+    cout<<com1[i][j];
+}
+int** arr;
+arr=(int **)calloc(width,sizeof(int*))
+return 0;
+}
