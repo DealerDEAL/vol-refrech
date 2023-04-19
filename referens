@@ -1,0 +1,12 @@
+
+#include <iostream>
+
+int main()
+{
+    int wheit = 2, heght = 2;
+    int** Arr;
+    Arr = (int **)calloc(wheit, sizeof(int*)); 
+    for(int i = 0; i < wheit; ++i)
+    *Arr = (int*)calloc(heght, sizeof(int**));
+    std::cout << Arr[0][0] << std::endl;
+}
