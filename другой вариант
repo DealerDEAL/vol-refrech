@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int GetRandomNumber(int min, int max)
+{
+  //srand(time(NULL));
+
+ //unsigned int num =min + rand () % max;
+ int num = min%max;
+
+  return num;
+}
+int main(){
+    int arrA[3][2];
+    int arrB[3][2];
+    
+	int a=1;
+	int b=2;
+	cout<<"comand 1"<<setw(12)<<"comand 2 \n";
+    for(int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+        //int a=GetRandomNumber(1,14);
+        //int b=GetRandomNumber(1,13);
+        arrA[i][j]=a;
+        arrB[i][j]=b;
+        a=a+2;
+        b=b+2;
+        }
+}
+
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrA[i][j]<<setw(4);
+        }
+        cout<<"\n";
+    }
+    cout<<setw(12);
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrB[i][j]<<setw(4);
+        }
+        cout<<"\n"<<setw(12);
+    }
+    int counta=0,countb=0;
+    int c=0;
+  while(counta<=20&&countb<=20){
+    	int coin=GetRandomNumber(c,3);
+    	if((coin=1&&coin!=2)/*&&(counta<=countb)*/){
+    		counta++;
+    		c++;
+		}
+		if((coin=2&&coin!=1)/*&&(countb<=counta)*/){
+		countb++;
+		    c++;
+		}
+    cout<<"\nscore"<<setw(12)<<"score \n";
+    cout<<setw(3)<<counta<<setw(11)<<countb;
+}
+if(counta=21){
+    cout<<"\nteam 1 win";
+}
+else{
+    cout<<"\nteam 2 win";
+}
+return 0;    
+}
