@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+
+
+using namespace std;
+
+int GetRandomNumber(int max, int min)
+{
+  srand(time(NULL));
+
+  unsigned int num =min + rand () % max;
+
+  return num;
+}
+int main(){
+    int arrA[3][2];
+    int arrB[3][2];
+    ofstream out;
+    ifstream in;
+    
+	int a=1;
+	int b=2;
+	cout<<"comand 1"<<setw(12)<<"comand 2 \n";
+    for(int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+        //int a=GetRandomNumber(1,14);
+        //int b=GetRandomNumber(1,13);
+        arrA[i][j]=a;
+        arrB[i][j]=b;
+        a=a+2;
+        b=b+2;
+        }
+}
+
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrA[i][j]<<setw(4);
+        }
+        cout<<"\n";
+    }
+    cout<<setw(12);
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrB[i][j]<<setw(4);
+        }
+        cout<<"\n"<<setw(12);
+    }
+    int counta=0,countb=0, f=1;
+    cout<<"a";
+    //bool play=true;
+ while(f==1){
+      cout << "cout A " << counta << " count B " << countb;
+    	int c=GetRandomNumber(0,10);
+    	int coin=c/5;
+    	if(coin==0){
+    	    counta++;
+		}
+        
+		if(coin==1){
+		    countb++;
+		}
+		cout<<"\nplay?\n"<<"yes-1 no-2\n";
+		int play2;
+		cin>>play2;
+		if(play2==2){
+		    f=0;
+		}
+  }
+    /*cout<<"\nscore"<<setw(12)<<"score \n";
+    cout<<setw(3)<<counta<<setw(11)<<countb;
+
+if(counta=21){
+    cout<<"\nteam 1 win";
+}
+
+else{
+    cout<<"\nteam 2 win";
+}*/
+return 0;    
+}
