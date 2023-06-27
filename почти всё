@@ -1,0 +1,146 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+
+
+using namespace std;
+
+int GetRandomNumber(int max, int min){
+  srand(time(NULL));
+
+  unsigned int num =min + rand () % max;
+
+  return num;
+}
+int main(){
+    int arrA[3][2];
+    int arrB[3][2];
+    ofstream out;
+    ifstream in;
+    
+	int a=1;
+	int b=2;
+	int f;
+	int player_A[7];
+	int player_B[7];
+	cout<<"comand 1"<<setw(12)<<"comand 2 \n";
+    for(int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+        arrA[i][j]=a;
+        arrB[i][j]=b;
+        a=a+2;
+        b=b+2;
+        }
+    }
+    //for(int i=0; i<7; i++){
+   //     player_A[i]=a
+    //    player_B[i]=
+    //}
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrA[i][j]<<setw(4);
+        }
+        cout<<"\n";
+    }
+    cout<<setw(12);
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrB[i][j]<<setw(4);
+        }
+        cout<<"\n"<<setw(12);
+    }
+    int score_A[100], score_B[100], i=0, x=1, o=0;
+    bool play=true, corect_comand=false, corect_player=false;
+    score_A[3]=0;
+    score_B[3]=0;
+    
+while(x==1){
+    do{
+        int c=1;
+        c=GetRandomNumber(1,10);
+        int y;
+        y=c%2;
+        if(y==5){
+        score_A[i]=i;
+        cout<<"\nscore a = "<<score_A[i];
+        i++;
+        if(score_A[3]!=0){
+            cout<<"\nteam A wins";
+            return 0;
+        }
+        }
+        if(y==0){
+        score_B[o]=o;
+        cout<<"\nscore b = "<<score_B[o];
+        o++; 
+        if(score_B[3]!=0){
+            cout<<"\nteam B wins";
+            return 0;
+        }
+        }
+        
+        cout<<"\n"<<setw(6)<<"cheng player";
+        cout<<"\nyes-1, no-2\n";
+        int chek;
+        int comand;
+        cin>>chek;
+        if(chek==1){
+            while(corect_comand==false){
+            cout<<"comand?\n"<<"a-1 b-2\n";
+            cin>>comand;
+            if(comand==1){
+                while(corect_player==false){
+                    cout<<"player?\n";
+                    cin>>chek;
+                    for (int i=0; i<3; i++){
+                        for(int j=0; j<2; j++){
+                            f=arrA[i][j];
+                            if(chek==f){
+                                cout<<"\ncorect cheng\n";
+                                corect_player=true;
+                            }
+                        }
+                    }
+                }
+                cout<<"please retry";
+                corect_comand=true;
+            }
+            if(comand==2){
+                while(corect_player==false){
+                    cout<<"player?";
+                    cin>>chek;
+                    for (int i=0; i<3; i++){
+                        for(int j=0; j<2; j++){
+                            f=arrB[i][j];
+                            if(chek==f){
+                                cout<<"\ncorect cheng\n";
+                                corect_player=true;
+                            }
+                        }
+                    }
+                }
+                cout<<"please retry";
+                corect_comand=true;
+            }
+            else{
+                cout<<"please retry";
+            }
+            }
+         }
+        
+        cout<<"\n"<<setw(6)<<"continue plaing";
+        cout<<"\nyes-1, no-2\n";
+        cin>>chek;
+        if(chek==2){
+            return 0;
+        }
+    }while(play==true);
+}
+cout<<"\n"<<score_B[i];
+    
+    
+return 0;    
+}
