@@ -1,0 +1,163 @@
+//обьявляем библиотеки
+#include <stdio.h>  
+#include <stdlib.h> 
+#include <time.h>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+
+//подключаем все функции стдио
+using namespace std;
+
+//обьявляем функцию с принимающими значениями
+int GetRandomNumber(int max, int min){
+    
+//функция рандома
+  srand(time(NULL));
+
+  unsigned int num =min + rand () % max;
+
+  return num;
+}
+int main(){
+    //обьявляем масивы и всё с ними связаное
+    int arrA[3][2];
+    int arrB[3][2];
+    int a=1;
+	int b=2;
+	int player_A[7];
+	int player_B[7];
+	
+	//сторим и показываем масивы
+	cout<<"comand 1"<<setw(12)<<"comand 2 \n";
+    for(int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+        arrA[i][j]=a;
+        arrB[i][j]=b;
+        a=a+2;
+        b=b+2;
+        }
+    }
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrA[i][j]<<setw(4);
+        }
+        cout<<"\n";
+    }
+    cout<<setw(12);
+    for (int i=0; i<3; i++){
+        for(int j=0; j<2; j++){
+            cout << arrB[i][j]<<setw(4);
+        }
+        cout<<"\n"<<setw(12);
+    }
+    
+    //обьявляем переменные для игры
+    int score_A[100], score_B[100], i=0, x=1, o=0;
+    score_A[3]=0;
+    score_B[3]=0;
+    
+    //цикл-игра
+while(x==1){
+    
+        //присуждение очков
+        int c;
+        c=GetRandomNumber(1,10);
+        int y;
+        y=c%2;
+        if(y==5){
+        score_A[i]=i;
+        cout<<"\nscore a = "<<score_A[i];
+        i++;
+        //условие победы а
+        if(score_A[3]!=0){
+            cout<<"\nteam A wins";
+            return 0;
+        }
+        }
+        if(y==0){
+        score_B[o]=o;
+        cout<<"\nscore b = "<<score_B[o];
+        o++; 
+        
+        //условие победы б
+        if(score_B[3]!=0){
+            cout<<"\nteam B wins";
+            return 0;
+        }
+        }
+        
+        // система смены игроков
+        cout<<"\n"<<setw(6)<<"chenge player";
+        cout<<"\nyes-1, no-2\n";
+        int check;
+        int comand;
+        cin>>check;
+        if(check==1){
+            bool corect_comand=false, corect_player=false;
+            while(corect_comand==false){
+                cout<<"comand?\n"<<"a-1 b-2\n";
+                cin>>comand;
+                if(comand==1){
+                    while(corect_player==false){
+                        cout<<"player?\n";
+                        cin>>check;
+                        
+                        //проверка и замена игроков
+                        for (int i=0; i<3; i++){
+                            for(int j=0; j<2; j++){
+                                if(check==arrA[i][j]){
+                                    corect_player=true;
+                                    cout<<"\nnumber new player!\n";
+                                    cout<<arrA[i][j]<<"->";
+                                    cin>>arrA[i][j];
+                                    cout<<"\nsuccessful\n";
+                                }
+                            }
+                        }
+                    corect_comand=true;
+                    if(corect_player==false){
+                        cout<<"please retry";
+                    }
+                    }
+                }
+                if(comand==2){
+                    while(corect_player==false){
+                        cout<<"player?\n";
+                        cin>>check;
+                        
+                        //проверка и замена игроков
+                        for (int i=0; i<3; i++){
+                            for(int j=0; j<2; j++){
+                                if(check==arrB[i][j]){
+                                    corect_player=true;
+                                    cout<<"\nnumber new player!\n";
+                                    cout<<arrB[i][j]<<"->";
+                                    cin>>arrB[i][j];
+                                    cout<<"\nsuccessful\n";
+                                }
+                            }
+                        }
+                    corect_comand=true;
+                    if(corect_player==false){
+                        cout<<"please retry";
+                    }
+                    }
+                }
+                if(corect_comand==false){
+                    cout<<"please retry\n";
+                }
+            }
+         }
+         
+         //проверка играть ли дальше
+        int play;
+        cout<<"\n"<<setw(6)<<"continue plaing";
+        cout<<"\nyes-1, no-2\n";
+        cin>>play;
+        if(play==2){
+            return 0;
+        }
+
+}
+}
